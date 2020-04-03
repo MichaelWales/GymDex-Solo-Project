@@ -4,18 +4,18 @@ DROP TABLE sessions;
 
 CREATE TABLE customers (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
   membership_type VARCHAR(255),
-  membership_status VARCHAR(255) NOT NULL
+  membership_status BOOLEAN
 );
 
 CREATE TABLE sessions (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  starting_time VARCHAR(255) NOT NULL,
-  type VARCHAR(255) NOT NULL,
-  status VARCHAR(255) NOT NULL,
-  max_capacity INT NOT NULL,
+  name VARCHAR(255),
+  starting_time VARCHAR(255),
+  type VARCHAR(255),
+  status BOOLEAN,
+  max_capacity INT,
   current_capacity INT
 );
 
