@@ -29,4 +29,54 @@ class Customer
     @id = results.first()['id'].to_i
   end
 
+  def self.all_members()
+    sql = "SELECT * FROM customers"
+    results = SqlRunner.run(sql)
+    return results.map {|result| Customer.new(result)}
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM customers WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Customer.new(results.first)
+  end
+
+  def update_member_name()
+    sql = "UPDATE customers SET
+    name = $1
+    WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def change_membership()
+    sql = "UPDATE customers SET
+    membership_type = $1
+    WHERE id = $2"
+    values = [@membership_type, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def activate_membership()
+    sql = "UPDATE customers SET
+    membership_status = $1
+    WHERE id = $2"
+    values = [@membership_status, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def deactivate_membership()
+    sql = "UPDATE customers SET
+    membership_status = $1
+    WHERE id = $2"
+    values = [@membership_status, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM customers"
+    SqlRunner.run(sql)
+  end
+
 end
