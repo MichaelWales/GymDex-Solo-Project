@@ -73,6 +73,14 @@ class Session
     SqlRunner.run(sql, values)
   end
 
+  def check_capacity()
+    if @current_capacity == @max_capacity
+      return "Session Full"
+    else
+      return "Number of spaces available: #{@max_capacity - @current_capacity}."
+    end
+  end
+
   def self.delete_all()
     sql = "DELETE FROM sessions"
     SqlRunner.run(sql)
