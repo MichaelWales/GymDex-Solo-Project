@@ -65,6 +65,14 @@ class Session
     SqlRunner.run(sql, values)
   end
 
+  def update_session_status()
+    sql = "UPDATE sessions SET
+    status = $1
+    WHERE id = $2"
+    values = [@status, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.delete_all()
     sql = "DELETE FROM sessions"
     SqlRunner.run(sql)
