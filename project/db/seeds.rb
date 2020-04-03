@@ -4,6 +4,7 @@ require_relative( "../models/session.rb" )
 require("pry-byebug")
 
 Customer.delete_all()
+Session.delete_all()
 
 customer1 = Customer.new({
   "name" => "Joe Rodger",

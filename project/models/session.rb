@@ -48,4 +48,26 @@ class Session
     return Session.new(results.first)
   end
 
+  def update_session_details()
+    sql = "UPDATE sessions SET
+    (
+      name,
+      starting_time,
+      type,
+      max_capacity
+    )
+    =
+    (
+      $1, $2, $3, $4
+    )
+    WHERE id = $5"
+    values = [@name, @starting_time, @type, @max_capacity, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM sessions"
+    SqlRunner.run(sql)
+  end
+
 end
