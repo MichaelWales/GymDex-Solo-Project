@@ -35,8 +35,17 @@ class Session
     @id = results.first()['id'].to_i
   end
 
-  def method_name
+  def self.all_sessions()
+    sql = "SELECT * FROM sessions"
+    results = SqlRunner.run(sql)
+    return results.map {|result| Session.new(result)}
+  end
 
+  def self.find(id)
+    sql = "SELECT * FROM sessions WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Session.new(results.first)
   end
 
 end
