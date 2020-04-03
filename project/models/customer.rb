@@ -50,7 +50,7 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
-  def change_membership()
+  def change_membership_type()
     sql = "UPDATE customers SET
     membership_type = $1
     WHERE id = $2"
@@ -58,15 +58,7 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
-  def activate_membership()
-    sql = "UPDATE customers SET
-    membership_status = $1
-    WHERE id = $2"
-    values = [@membership_status, @id]
-    SqlRunner.run(sql, values)
-  end
-
-  def deactivate_membership()
+  def change_membership_status()
     sql = "UPDATE customers SET
     membership_status = $1
     WHERE id = $2"
