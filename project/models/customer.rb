@@ -9,7 +9,7 @@ class Customer
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @membership_type = options['membership_type']
-    @membership_status = options['membership_status'].to_b
+    @membership_status = options['membership_status']
   end
 
   def create_member()
