@@ -1,18 +1,18 @@
 require_relative('../db/sql_runner')
+require_relative('./customer')
 
 class Session
 
   attr_reader :id
-  attr_accessor :name, :starting_time, :type, :status, :max_capacity, :current_capacity
+  attr_accessor :name, :starting_time, :type, :status, :max_capacity
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @starting_time = options['starting_time']
     @type = options['type']
-    @status = options['options'].to_s
+    @status = options['options']
     @max_capacity = options['max_capacity'].to_i
-    @current_capacity = options['current_capacity'].to_i
   end
 
   def create_session()
@@ -22,15 +22,14 @@ class Session
       starting_time,
       type,
       status,
-      max_capacity,
-      current_capacity
+      max_capacity
     )
     VALUES
     (
-      $1, $2, $3, $4, $5, $6
+      $1, $2, $3, $4, $5
     )
     RETURNING id"
-    values = [@name, @starting_time, @type, @status, @max_capacity, @current_capacity]
+    values = [@name, @starting_time, @type, @status, @max_capacity]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -73,17 +72,25 @@ class Session
     SqlRunner.run(sql, values)
   end
 
-  def check_capacity()
-    if @current_capacity == @max_capacity
-      return "Session Full"
-    else
-      return "Number of spaces available: #{@max_capacity - @current_capacity}."
-    end
-  end
-
   def self.delete_all()
     sql = "DELETE FROM sessions"
     SqlRunner.run(sql)
+  end
+
+  def customers()
+    sql = "SELECT customers.*
+    FROM customers
+    INNER JOIN bookings
+    ON bookings.customer_id = customers.id
+    WHERE session_id = $1"
+    values = [@id]
+    customer_data = SqlRunner.run(sql, values)
+    return Customer.map_items(customer_data)
+  end
+
+  def self.map_items(session_data)
+    result = session_data.map { |session| Session.new( session ) }
+    return result
   end
 
 end

@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('./session')
 
 class Customer
 
@@ -69,6 +70,22 @@ class Customer
   def self.delete_all()
     sql = "DELETE FROM customers"
     SqlRunner.run(sql)
+  end
+
+  def sessions()
+    sql = "SELECT sessions.*
+    FROM sessions
+    INNER JOIN bookings
+    ON bookings.session_id = sessions.id
+    WHERE customer_id = $1"
+    values = [@id]
+    session_data = SqlRunner.run(sql, values)
+    return Session.map_items(session_data)
+  end
+
+  def self.map_items(customer_data)
+    result = customer_data.map { |customer| Customer.new( customer ) }
+    return result
   end
 
 end

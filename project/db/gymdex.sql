@@ -1,4 +1,4 @@
-DROP TABLE customers_sessions;
+DROP TABLE bookings;
 DROP TABLE customers;
 DROP TABLE sessions;
 
@@ -16,10 +16,9 @@ CREATE TABLE sessions (
   type VARCHAR(255),
   status BOOLEAN,
   max_capacity INT,
-  current_capacity INT
 );
 
-CREATE TABLE customers_sessions (
+CREATE TABLE bookings (
   id SERIAL PRIMARY KEY,
   customer_id INT REFERENCES customers(id),
   session_id INT REFERENCES sessions(id)
