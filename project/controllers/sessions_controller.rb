@@ -7,3 +7,7 @@ get '/sessions/all' do
   @sessions = Session.all_sessions()
   erb(:"sessions/index")
 end
+
+get '/session/new' do
+  erb(:"sessions/new")
+end

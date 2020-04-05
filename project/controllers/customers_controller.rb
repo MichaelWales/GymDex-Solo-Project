@@ -18,6 +18,14 @@ post '/customer/all' do
   redirect to('/customer/all')
 end
 
-get 'customer/:id/edit' do
+get '/customer/:id/edit' do
+  id = params['id'].to_i
+  @customer = Customer.find(id)
   erb(:"customers/edit")
+end
+
+post '/customer/:id' do
+  customer = Customer.new(params)
+  customer.update()
+  redirect to('customer/all')
 end

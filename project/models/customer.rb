@@ -43,27 +43,19 @@ class Customer
     return Customer.new(results.first)
   end
 
-  def update_member_name()
+  def update()
     sql = "UPDATE customers SET
-    name = $1
-    WHERE id = $2"
-    values = [@name, @id]
-    SqlRunner.run(sql, values)
-  end
-
-  def update_membership_type()
-    sql = "UPDATE customers SET
-    membership_type = $1
-    WHERE id = $2"
-    values = [@membership_type, @id]
-    SqlRunner.run(sql, values)
-  end
-
-  def update_membership_status()
-    sql = "UPDATE customers SET
-    membership_status = $1
-    WHERE id = $2"
-    values = [@membership_status, @id]
+    (
+      name,
+      membership_type,
+      membership_status
+    )
+    =
+    (
+      $1, $2, $3
+    )
+    WHERE id = $4"
+    values = [@name, @membership_type, @membership_status, @id]
     SqlRunner.run(sql, values)
   end
 
