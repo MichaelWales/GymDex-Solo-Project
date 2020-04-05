@@ -11,3 +11,9 @@ end
 get '/session/new' do
   erb(:"sessions/new")
 end
+
+post '/session/all' do
+  session = Session.new(params)
+  session.create_session()
+  redirect to('/session/all')
+end

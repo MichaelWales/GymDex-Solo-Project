@@ -53,24 +53,25 @@ class Session
       name,
       starting_time,
       type,
-      max_capacity
+      max_capacity,
+      status
     )
     =
     (
-      $1, $2, $3, $4
+      $1, $2, $3, $4, $5
     )
-    WHERE id = $5"
-    values = [@name, @starting_time, @type, @max_capacity, @id]
+    WHERE id = $6"
+    values = [@name, @starting_time, @type, @max_capacity, @status, @id]
     SqlRunner.run(sql, values)
   end
 
-  def update_session_status()
-    sql = "UPDATE sessions SET
-    status = $1
-    WHERE id = $2"
-    values = [@status, @id]
-    SqlRunner.run(sql, values)
-  end
+  # def update_session_status()
+  #   sql = "UPDATE sessions SET
+  #   status = $1
+  #   WHERE id = $2"
+  #   values = [@status, @id]
+  #   SqlRunner.run(sql, values)
+  # end
 
   def self.delete_all()
     sql = "DELETE FROM sessions"
