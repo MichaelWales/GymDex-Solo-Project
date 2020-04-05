@@ -36,6 +36,13 @@ class Customer
     return results.map {|result| Customer.new(result)}
   end
 
+  def self.all_active_members()
+    sql = "SELECT * FROM customers
+    WHERE membership_status"
+    results = SqlRunner.run(sql)
+    return results.map {|result| Customer.new(result)}
+  end
+
   def self.find(id)
     sql = "SELECT * FROM customers WHERE id = $1"
     values = [id]

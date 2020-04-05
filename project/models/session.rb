@@ -40,6 +40,13 @@ class Session
     return results.map {|result| Session.new(result)}
   end
 
+  def self.all_active_sessions()
+    sql = "SELECT * FROM sessions
+    WHERE status"
+    results = SqlRunner.run(sql)
+    return results.map {|result| Session.new(result)}
+  end
+
   def self.find(id)
     sql = "SELECT * FROM sessions WHERE id = $1"
     values = [id]
@@ -65,14 +72,6 @@ class Session
     SqlRunner.run(sql, values)
   end
 
-  # def update_session_status()
-  #   sql = "UPDATE sessions SET
-  #   status = $1
-  #   WHERE id = $2"
-  #   values = [@status, @id]
-  #   SqlRunner.run(sql, values)
-  # end
-
   def self.delete_all()
     sql = "DELETE FROM sessions"
     SqlRunner.run(sql)
@@ -94,7 +93,7 @@ class Session
   end
 
   def session_at_max?()
-    session_size() >= @max_capacity
+    @max_capacity <= session_size()
   end
 
   def peak_time?()
@@ -109,6 +108,6 @@ class Session
     result = session_data.map { |session| Session.new( session ) }
     return result
   end
-  
+
 
 end

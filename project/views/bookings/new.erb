@@ -6,9 +6,25 @@
 <form action="/booking/all" method="POST">
 
 <label for="New Booking"><h3>New Booking</h3>
-  <h4>Member: </h4><input id="customer" type="text" name="name">
+  <h4>Member: </h4>
 
-  <h4>Session:</h4><input list="session_names" id="customer" type="text" name="session">
+  <select id="customer" name="customer_id">
+    <%for customer in @customers%>
+      <option value="<%=customer.id%>">
+          <%=customer.name()%>
+      </option>
+    <%end%>
+  </select>
+
+  <h4>Session:</h4><select id="session" name="session_id">
+    <%for session in @sessions%>
+      <% if session.session_at_max?() == false%>
+      <option value="<%=session.id%>">
+          <%=session.name()%>
+      </option>
+      <%end%>
+    <%end%>
+  </select>
 
 </label>
 
@@ -20,5 +36,10 @@
 
 <br>
 <br>
-<input type="submit" name="Add Member" value="Add Member">
+<input type="submit" name="Create Booking" value="Create Booking">
+<br>
+<br>
+<a href="/">
+<button type="button" name="Home">Home</button>
+</a>
 </form>
