@@ -83,6 +83,22 @@ class Customer
     return Session.map_items(session_data)
   end
 
+  def membership_check?()
+    if @membership_type == "Premium"
+      return true
+    else
+      false
+    end
+  end
+
+  def active_member()
+    if @membership_status == 't'
+      return "Active"
+    else
+      "Deactivated"
+    end
+  end
+
   def self.map_items(customer_data)
     result = customer_data.map { |customer| Customer.new( customer ) }
     return result

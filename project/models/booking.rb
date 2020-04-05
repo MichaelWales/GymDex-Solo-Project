@@ -1,13 +1,12 @@
 require_relative('../db/sql_runner')
-require_relative('./customer')
-require_relative('./session')
 
 
 class Booking
 
-  attr_reader :id, :customer_id, :session_id
+  attr_reader :id
+  attr_accessor :customer_id, :session_id
 
-  def initialize
+  def initialize(options)
     @id = options['id'].to_i if options['id']
     @customer_id = options['customer_id'].to_i
     @session_id = options['session_id'].to_i
@@ -38,6 +37,11 @@ class Booking
     return Customer.new(customer)
   end
 
+  def customer_name()
+    customer = customer()
+    customer.name
+  end
+
   def session()
     sql = "SELECT *
     FROM sessions
@@ -45,6 +49,11 @@ class Booking
     values = [@session_id]
     session = SqlRunner.run(sql, values).first
     return Session.new(session)
+  end
+
+  def session_name()
+    session = session()
+    session.name
   end
 
   def self.all_bookings()

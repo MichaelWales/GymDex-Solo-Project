@@ -88,6 +88,22 @@ class Session
     return Customer.map_items(customer_data)
   end
 
+  def session_size()
+    customers().size()
+  end
+
+  def session_at_max?()
+    session_size() >= @max_capacity
+  end
+
+  def peak_time?()
+    if @starting_time >= "17:00:00" && @starting_time <= "21:00:00"
+      return true
+    else
+      false
+    end
+  end
+
   def self.map_items(session_data)
     result = session_data.map { |session| Session.new( session ) }
     return result

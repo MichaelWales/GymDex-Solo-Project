@@ -6,6 +6,7 @@ require("pry-byebug")
 
 Customer.delete_all()
 Session.delete_all()
+Booking.delete_all()
 
 customer1 = Customer.new({
   "name" => "Joe Rodger",
@@ -38,7 +39,7 @@ customer4.create_member()
 
 session1 = Session.new({
   "name" => "Body Pump",
-  "starting_time" => "11:00am",
+  "starting_time" => "11:00:00",
   "type" => "strength",
   "status" => true,
   "max_capacity" => 5,
@@ -47,7 +48,7 @@ session1.create_session()
 
 session2 = Session.new({
   "name" => "Spin",
-  "starting_time" => "2:00pm",
+  "starting_time" => "14:00:00",
   "type" => "cardio",
   "status" => true,
   "max_capacity" => 3,
@@ -56,12 +57,34 @@ session2.create_session()
 
 session3 = Session.new({
   "name" => "Yoga",
-  "starting_time" => "6:00pm",
+  "starting_time" => "18:00:00",
   "type" => "mindfulness",
   "status" => true,
   "max_capacity" => 6,
   })
 session3.create_session()
+
+
+booking1 = Booking.new({
+  "customer_id" => customer1.id,
+  "session_id" => session1.id
+  })
+
+booking1.save()
+
+booking2 = Booking.new({
+  "customer_id" => customer2.id,
+  "session_id" => session1.id
+  })
+
+booking2.save()
+
+booking3 = Booking.new({
+  "customer_id" => customer3.id,
+  "session_id" => session2.id
+  })
+
+booking3.save()
 
 
 binding.pry
