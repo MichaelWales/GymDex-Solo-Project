@@ -13,5 +13,8 @@
   <h4>Current Bookings: </h4><p><%= session.session_size %></p>
   <h4>Fully Booked?: </h4><p><%= session.session_at_max? %></p>
   <h4>Premium Session Only?</h4><p><%= session.peak_time? %></p>
+  <a href="/session/<%=session.id%>/edit">
+  <button type="button" name="Edit">Edit</button>
+  </a>
   <hr>
 <% end %>

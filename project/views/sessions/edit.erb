@@ -1,0 +1,26 @@
+<hgroup>
+  <h1>GymDex</h1>
+  <h2>.SessionManager</h2>
+</hgroup>
+
+<form action="/session/<%=@session.id%>" method="POST">
+
+<label for="Session Details"><h3>Edit Session</h3>
+  <h4>Name: </h4><input id="session" type="text" name="name">
+  <h4>Starting Time: </h4><input id="session" type="time" name="starting_time">
+  <h4>Type:</h4><input list="type" id="session" type="text" name="type">
+  <h4>Capacity: </h4><input type="number" name="max_capacity">
+  <h4>Active?:</h4><input id="status" type="checkbox" name="status"></label>
+
+<datalist id="type">
+  <option value="Cardio">
+  <option value="Strength">
+  <option value="Mindfulness">
+</datalist>
+
+<br>
+<br>
+<input type="submit" name="Confirm Edits" value="Confirm Edits">
+
+
+</form>

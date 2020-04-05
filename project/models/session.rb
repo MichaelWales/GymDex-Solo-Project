@@ -47,7 +47,7 @@ class Session
     return Session.new(results.first)
   end
 
-  def update_session_details()
+  def update()
     sql = "UPDATE sessions SET
     (
       name,
@@ -98,7 +98,7 @@ class Session
   end
 
   def peak_time?()
-    if @starting_time >= "17:00:00" && @starting_time <= "21:00:00"
+    if @starting_time >= "16:59:59" && @starting_time <= "20:59:59"
       return true
     else
       false
@@ -109,5 +109,6 @@ class Session
     result = session_data.map { |session| Session.new( session ) }
     return result
   end
+  
 
 end

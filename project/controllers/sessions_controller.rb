@@ -3,7 +3,7 @@ require('sinatra/contrib/all') if development?
 require_relative('../models/session')
 also_reload( '../models/*' )
 
-get '/sessions/all' do
+get '/session/all' do
   @sessions = Session.all_sessions()
   erb(:"sessions/index")
 end
@@ -16,4 +16,16 @@ post '/session/all' do
   session = Session.new(params)
   session.create_session()
   redirect to('/session/all')
+end
+
+get '/session/:id/edit' do
+  id = params['id'].to_i
+  @session = Session.find(id)
+  erb(:"sessions/edit")
+end
+
+post '/session/:id' do
+  session = Session.new(params)
+  session.update()
+  redirect to('session/all')
 end
