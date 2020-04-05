@@ -1,7 +1,8 @@
 <h1>Customers</h1>
 
 <% for customer in @customers %>
-  <%= customer.name %>
-  <%= customer.membership_type %>
-  <%= customer.membership_status %>
+  <p><%= customer.name %></p>
+  <p><%= customer.membership_type %></p>
+  <p><%= customer.active_member %></p>
+  <hr>
 <% end %>
