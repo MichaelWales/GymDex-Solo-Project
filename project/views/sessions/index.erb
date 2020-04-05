@@ -1,12 +1,12 @@
 <h1>Sessions</h1>
 
 <% for session in @sessions %>
-  <p><%= session.name %></p>
-  <p><%= session.starting_time %></p>
-  <p><%= session.type %></p>
-  <p><%= session.status %></p>
-  <p><%= session.session_size %></p>
-  <p><%= session.session_at_max? %></p>
-  <p><%= session.peak_time? %></p>
+  <h4>Name: </h4><p><%= session.name %></p>
+  <h4>Starting Time: </h4><p><%= session.starting_time %></p>
+  <h4>Type: </h4><p><%= session.type %></p>
+  <h4>Status: </h4><p><%= session.status %></p>
+  <h4>Current Bookings: </h4><p><%= session.session_size %></p>
+  <h4>Fully Booked?: </h4><p><%= session.session_at_max? %></p>
+  <h4>Premium Session Only?</h4><p><%= session.peak_time? %></p>
   <hr>
 <% end %>
