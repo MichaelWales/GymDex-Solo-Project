@@ -1,18 +1,28 @@
 <hgroup>
   <h1>GymDex</h1>
-  <h3>.MemberServices</h3>
-
-  <h3>Add New Member</h3>
+  <h2>.MemberServices</h2>
 </hgroup>
 
 <form action="/customers/index" method="POST">
 
-<label for="customer">Member Details</label>
-<input id="customer" type="text" name="Name">
-<input id="customer" type="text" name="Membership Type">
-<input id="customer" type="text" name="Membership Status">
+<label for="Member Details"><h3>Add New Member</h3>
+  <h4>Name: </h4><input id="customer" type="text" name="Name">
+  <h4>Membership Type:</h4><input list="membership_type" id="customer" type="text" name="Membership Type">
+  <h4>Membership Status:</h4><input list="membership_status" id="customer" type="text" name="Membership Status">
+</label>
 
+<datalist id="membership_type">
+  <option value="Premium">
+  <option value="Basic">
+</datalist>
 
+<datalist id="membership_status">
+  <option value="Active">
+  <option value="Deactivated">
+</datalist>
+<br>
+<br>
+<input type="submit" name="Create Member" value="Add Member">
 
 
 </form>

@@ -7,3 +7,8 @@ get '/customer/all' do
   @customers = Customer.all_members()
   erb(:"customers/index")
 end
+
+get '/customer/new' do
+  @customers = Customer.all_members()
+  erb(:"customers/new")
+end
