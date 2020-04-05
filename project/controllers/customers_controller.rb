@@ -9,6 +9,15 @@ get '/customer/all' do
 end
 
 get '/customer/new' do
-  @customers = Customer.all_members()
   erb(:"customers/new")
+end
+
+post '/customer/all' do
+  customer = Customer.new(params)
+  customer.create_member()
+  redirect to('/customer/all')
+end
+
+get 'customer/:id/edit' do
+  erb(:"customers/edit")
 end
