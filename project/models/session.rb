@@ -11,7 +11,7 @@ class Session
     @name = options['name']
     @starting_time = options['starting_time']
     @type = options['type']
-    @status = options['options']
+    @status = options['status']
     @max_capacity = options['max_capacity'].to_i
   end
 

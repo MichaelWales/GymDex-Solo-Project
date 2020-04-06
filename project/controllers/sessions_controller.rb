@@ -13,6 +13,7 @@ get '/session/new' do
 end
 
 post '/session/all' do
+  p params
   session = Session.new(params)
   session.create_session()
   redirect to('/session/all')
