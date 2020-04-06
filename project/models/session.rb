@@ -93,11 +93,7 @@ class Session
   end
 
   def session_at_max?()
-    if @max_capacity >= session_size()
-      return "#{@max_capacity - session_size()} spaces left"
-    else
-      return "Session Full"
-    end
+    @max_capacity <= session_size()
   end
 
   def peak_time?()
