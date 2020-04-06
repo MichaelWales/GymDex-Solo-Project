@@ -18,7 +18,7 @@
 
   <h4>Session:</h4><select id="session" name="session_id">
     <%for session in @sessions%>
-      <% if session.session_at_max?() == false%>
+      <% if session.session_at_max?() == true%>
       <option value="<%=session.id%>">
           <%=session.name()%>
       </option>
