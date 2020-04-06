@@ -27,15 +27,15 @@ HOW TO RUN THE APP
 
 NOTE: The app was designed and tested in Google Chrome and so it is advised to use Chrome when navigating.
 
-A. Download the Repo using the green "Clone or Download" button at the top right of this project's GitHub page.
-B. Using Terminal (or another CLI) navigate to the "project" folder and run the following commands:
-      1) createdb gymdex
-      2) psql -d gymdex -f db/gymdex.sql
-      3) ruby db/seeds.rb
-      4) Open another Terminal tab/window and run psql -d gymdex
-      5) Open another Terminal tab/window and run ruby app.rb
-C. Finally, open Chrome and enter localhost:4567 in the address bar.
-D. Enjoy!
+A. Download the Repo using the green "Clone or Download" button at the top right of this project's GitHub page.  
+B. Using Terminal (or another CLI) navigate to the "project" folder and run the following commands:  
+      1) createdb gymdex  
+      2) psql -d gymdex -f db/gymdex.sql  
+      3) ruby db/seeds.rb  
+      4) Open another Terminal tab/window and run psql -d gymdex  
+      5) Open another Terminal tab/window and run ruby app.rb  
+C. Finally, open Chrome and enter localhost:4567 in the address bar.  
+D. Enjoy!  
 
 --------------------------------------------
 --------------------------------------------
