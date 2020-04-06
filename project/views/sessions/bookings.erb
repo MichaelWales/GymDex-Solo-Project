@@ -11,6 +11,7 @@
 <button type="button" name="Home">Home</button>
 </a>
 
-<% for booking in session %>
-  <p><%= session.name %></p>
+<% for customer in @Customers %>
+  <p><%= customer.name %></p>
 <% end %>
+<br>
