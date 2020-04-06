@@ -11,7 +11,8 @@
 <button type="button" name="Home">Home</button>
 </a>
 
-<% for customer in @Customers %>
+<% @result = for customer in @Customers %>
   <p><%= customer.name %></p>
 <% end %>
 <br>
+<p><h3>Total Bookings: <%= @result.count %></p></h3>
