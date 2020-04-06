@@ -9,11 +9,13 @@
   <h4>Member: </h4>
 
   <select id="customer" name="customer_id">
+
     <%for customer in @customers%>
-      <option value="<%=customer.id%>">
+        <option value="<%=customer.id%>">
           <%=customer.name()%>
-      </option>
+        </option>
     <%end%>
+
   </select>
 
   <h4>Session:</h4><select id="session" name="session_id">
