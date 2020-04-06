@@ -30,9 +30,9 @@ post '/session/:id' do
   redirect to('session/all')
 end
 
-get 'session/:id/bookings' do
+get '/session/:id/bookings' do
   id = params['id'].to_i
   session = Session.find(id)
   @Customers = session.customers()
-  erb(':sessions/bookings')
+  erb(:"sessions/bookings")
 end

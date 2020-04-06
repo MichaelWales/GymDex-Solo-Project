@@ -1,0 +1,15 @@
+<hgroup>
+  <h1>GymDex</h1>
+  <h2>.SessionManager</h2>
+</hgroup>
+
+<h3>Bookings</h3>
+<a href="/session/all">
+<button type="button" name="Back">Back</button>
+</a>
+<a href="/">
+<button type="button" name="Home">Home</button>
+</a>
+<% for booking in session %>
+  <p><%= session.name %></p>
+<% end %>
