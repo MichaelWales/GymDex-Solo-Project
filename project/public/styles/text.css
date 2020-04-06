@@ -1,0 +1,19 @@
+hgroup {
+  font-family: "Copperplate", sans-serif;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+h3, h4 {
+  font-family: "Copperplate", sans-serif;
+  font-size: 20px
+}
+
+p {
+  font-family: "Copperplate", sans-serif;
+  font-weight: lighter;
+}
