@@ -15,7 +15,7 @@ get '/booking/new' do
 end
 
 post '/booking/all' do
-  booking = Booking.new(params)
+  booking = Booking.membership_check(params)
   booking.save()
   redirect to('/customer/all')
 end

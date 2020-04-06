@@ -82,7 +82,7 @@ class Customer
     return Session.map_items(session_data)
   end
 
-  def membership_check?()
+  def correct_membership?()
     if @membership_type == "Premium"
       return true
     else

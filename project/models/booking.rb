@@ -72,4 +72,11 @@ class Booking
     return result
   end
 
+  def self.membership_check(params)
+    customer = Customer.find(params[:customer_id])
+    session = Session.find(params[:session_id])
+    return if customer.correct_membership? == false && session.peak_time? == true
+    Booking.new(params)
+  end
+
 end
