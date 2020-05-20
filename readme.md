@@ -1,5 +1,4 @@
 # ABOUT THE PROJECT
----
 
 This app is designed to be a tool that a gym could use to keep track of members, sessions and bookings. It takes into account different membership types, customised sessions, member details and booking that take the membership levels and membership activity into account.
 
@@ -23,7 +22,6 @@ The Gym could mark members and classes as active/deactivated. Deactivated member
 ---
 
 ## HOW TO RUN THE APP
----
 
 NOTE: The app was designed and tested in Google Chrome and so it is advised to use Chrome when navigating.
 
